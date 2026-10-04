@@ -1,0 +1,19 @@
+import { Router } from "express";
+import { 
+    createUser, deleteUser, getAllUsers, getUserById, updateUser 
+} from "../controllers/userController.js";
+import { validateUser } from "../middlewares/inputValidator.js";
+
+
+
+const router = Router();
+
+
+router.get("/", getAllUsers);
+router.get("/:id", getUserById);
+router.post("/", validateUser, createUser);
+router.put("/:id", validateUser, updateUser);
+router.delete("/:id", deleteUser);
+
+export default router;
+
