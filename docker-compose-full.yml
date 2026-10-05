@@ -3,6 +3,19 @@ name: pg_Express_GRP
 
 services:
 
+  expressjs:
+    # build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: expressjs
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      # - "8080:8080"
+    # depends_on:
+    #   - postgres
+  
   postgres:
     image: postgres:18
     container_name: postgres-db
