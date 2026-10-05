@@ -12,7 +12,8 @@ services:
     restart: unless-stopped
     ports:
       # - "3000:3000"
-      - "8083:${PORT}"
+      # - "8083:${PORT}"
+      - "${PORT}:${PORT}"
     environment:
       DB_URI: ${DB_URI_DOCKER}
     depends_on:
@@ -39,7 +40,7 @@ services:
     container_name: adminer-dbClient
     restart: always
     ports:
-      - 8082:8080
+      - 8083:8080
 
 volumes:
   pg_express_data:
