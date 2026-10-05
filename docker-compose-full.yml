@@ -11,10 +11,14 @@ services:
     container_name: expressjs
     restart: unless-stopped
     ports:
-      - "3000:3000"
-      # - "8080:8080"
-    # depends_on:
-    #   - postgres
+      # - "3000:3000"
+      - "8083:${PORT}"
+    environment:
+      DB_URI: ${DB_URI_DOCKER}
+    depends_on:
+      - postgres
+      # depends_on:
+      #   - postgres
   
   postgres:
     image: postgres:18
@@ -23,8 +27,8 @@ services:
     volumes:
       - pg_express_data:/var/lib/postgresql
       # - ./data/pg_express_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: pg

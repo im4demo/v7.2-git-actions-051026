@@ -16,7 +16,7 @@ app.use(express.json());
 
 // Routes
 app.get("/", async (req, res) => {
-    res.send("Expr - Home Page...!");
+    res.send("Expr - App...!");
 });
 
 
